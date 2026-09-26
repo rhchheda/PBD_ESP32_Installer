@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Project Clinic · EE Lab Setup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0d1b3e; --navy-2:#182b55; --gold:#c9a84c; --gold-2:#ead282;
+    --ink:#13203c; --muted:#68758f; --line:rgba(13,27,62,0.12);
+    --paper:#ffffff; --soft:#f5f1e8;
+    --shadow:0 18px 45px rgba(13,27,62,0.12);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:Outfit,system-ui,sans-serif;color:var(--ink);background:var(--soft);padding-bottom:0;}
+  a{color:#226da8;}
+  .topbar{background:var(--navy);color:#fff;border-bottom:1px solid rgba(201,168,76,0.24);}
+  .topbar-inner{max-width:880px;margin:0 auto;padding:26px 22px;display:flex;align-items:center;gap:16px;}
+  .brand-logo{height:52px;width:auto;border-radius:9px;flex:none;object-fit:contain;background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.7);padding:4px;}
+  .brand-title{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:600;}
+  .brand-title span{color:var(--gold-2);font-style:italic;}
+  .brand-sub{font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.6);margin-top:4px;}
+  .wrap{max-width:880px;margin:0 auto;padding:30px 22px 70px;}
+  h2{font-family:"Cormorant Garamond",serif;font-size:23px;margin:36px 0 14px;color:var(--navy);}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:22px 24px;box-shadow:var(--shadow);margin-bottom:18px;}
+  .card p{line-height:1.7;font-size:14.5px;color:var(--ink);margin:0 0 10px;}
+  .card p:last-child{margin-bottom:0;}
+  .card ul{margin:0;padding:0 0 0 20px;font-size:14.5px;line-height:1.8;}
+  .steps{list-style:none;margin:0;padding:0;counter-reset:step;}
+  .steps li{position:relative;padding:2px 0 20px 42px;font-size:14.5px;line-height:1.7;}
+  .steps li:last-child{padding-bottom:0;}
+  .steps li::before{
+    counter-increment:step;content:counter(step);position:absolute;left:0;top:0;
+    width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--gold-2);
+    font-family:"JetBrains Mono",monospace;font-size:12.5px;display:flex;align-items:center;justify-content:center;
+  }
+  .steps li strong{color:var(--navy);}
+  .note{border-left:3px solid var(--gold);background:#fbf6e9;padding:12px 16px;border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.6;margin-top:14px;}
+  .note strong{color:var(--navy);}
+  code{background:#eef1f8;padding:1px 6px;border-radius:5px;font-family:"JetBrains Mono",monospace;font-size:13px;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:640px){.two-col{grid-template-columns:1fr;} .topbar-inner{flex-wrap:wrap;}}
+  .sticky-footer{
+    position:sticky;bottom:0;z-index:30;background:var(--navy);color:rgba(255,255,255,.85);
+    border-top:1px solid rgba(201,168,76,0.3);padding:12px 22px;font-size:12px;
+    text-align:center;font-family:"JetBrains Mono",monospace;
+  }
+  .sticky-footer span.heart{color:#e4667a;display:inline-block;animation:throb 1.1s ease-in-out infinite;}
+  @keyframes throb{
+    0%,100%{transform:scale(1);}
+    25%{transform:scale(1.28);}
+    45%{transform:scale(0.92);}
+    60%{transform:scale(1.15);}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <img src="assets/KLE_Logo.png" alt="KLE Logo" class="brand-logo" />
+    <div>
+      <div class="brand-title">Project Clinic <span>· EE Lab Setup</span></div>
+      <div class="brand-sub">KLE Technological University, Hubballi · C-SHInE</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="card">
+    <p>This tool sets up your machine for embedded development in one run. It installs the Arduino IDE, the ESP32 board support you need for the DOIT ESP32 DEVKIT V1, and the USB drivers (CP210x and CH210x) that let your computer talk to the board over a cable. You run one file, approve a couple of prompts, and it handles the rest.</p>
+  </div>
+
+  <h2>Before you start</h2>
+  <div class="card">
+    <ul>
+      <li>Windows 10/11 or macOS, with your machine's admin password on hand</li>
+      <li>About 3 GB of free disk space</li>
+      <li>A stable internet connection (downloads run in the background)</li>
+      <li>Your ESP32 DOIT DEVKIT V1 board and USB cable, for after setup finishes</li>
+    </ul>
+  </div>
+
+  <h2>Windows setup</h2>
+  <div class="card">
+    <ol class="steps">
+      <li>Download the setup folder and double-click <strong>Run-Setup.bat</strong>.</li>
+      <li>A dark command window opens briefly, then a <strong>User Account Control</strong> prompt appears. Click <strong>Yes</strong>.</li>
+      <li>Windows may show a blue <strong>"Windows protected your PC"</strong> screen. This is expected for a new institute tool. Click <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
+      <li>A progress dashboard opens and works through each step on its own. This takes a few minutes depending on your internet speed.</li>
+      <li>When it finishes, a result window tells you setup is complete. Click <strong>OK</strong> and plug in your board.</li>
+    </ol>
+    <div class="note"><strong>Why the warning appears:</strong> this installer is not yet signed with a paid publisher certificate, so Windows flags any new, unrecognized tool this way. It does not mean the file is unsafe, only that Windows does not yet recognize the publisher.</div>
+  </div>
+
+  <h2>Mac setup</h2>
+  <div class="card">
+    <ol class="steps">
+      <li>Download the setup folder and locate <strong>Install-Project-Clinic-Setup-Mac.command</strong>.</li>
+      <li>Right-click (or Control-click) the file and choose <strong>Open</strong>, rather than double-clicking it the first time.</li>
+      <li>macOS will warn that the file is from an unidentified developer. Click <strong>Open</strong> again to confirm.</li>
+      <li>Enter your Mac password when asked. This is needed to install drivers.</li>
+      <li>Notifications will appear in the top right corner as each step completes. Setup finishes with a summary dialog.</li>
+    </ol>
+  </div>
+
+  <h2>If something goes wrong</h2>
+  <div class="card">
+    <p>Every run writes a log file you can share with your instructor:</p>
+    <div class="two-col">
+      <p><strong>Windows:</strong><br><code>%TEMP%\ee-lab-setup\install-log.txt</code></p>
+      <p><strong>Mac:</strong><br><code>/tmp/ee-lab-setup/install-log.txt</code></p>
+    </div>
+    <p>Most issues are one of two things: not enough free disk space, or a slow/interrupted internet connection during download. Re-running the setup file is safe. It reuses anything already downloaded and only redoes what is missing.</p>
+  </div>
+
+  <h2>Need help</h2>
+  <div class="card">
+    <p>Reach out to your lab instructor or the Project Clinic team at C-SHInE with the log file above, and mention which step the dashboard was on when it stopped.</p>
+  </div>
+
+</div>
+
+<div class="sticky-footer">
+  Made with <span class="heart">❤</span> ~rhc · Project Clinic, KLE-C-SHInE
+</div>
+
+</body>
+</html>
