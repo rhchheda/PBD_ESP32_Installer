@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Project Clinic · PBD Setup</title>
+<title>Project Clinic · EE Lab Setup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -43,6 +43,13 @@
   code{background:#eef1f8;padding:1px 6px;border-radius:5px;font-family:"JetBrains Mono",monospace;font-size:13px;}
   .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   @media(max-width:640px){.two-col{grid-template-columns:1fr;} .topbar-inner{flex-wrap:wrap;}}
+  .downloads{display:flex;gap:14px;flex-wrap:wrap;}
+  .dl-btn{
+    flex:1;min-width:200px;text-align:center;background:var(--navy);color:var(--gold-2);
+    font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:500;text-decoration:none;
+    padding:14px 18px;border-radius:9px;border:1px solid rgba(201,168,76,0.5);
+  }
+  .dl-btn:hover{background:var(--navy-2);border-color:var(--gold);}
   .sticky-footer{
     position:sticky;bottom:0;z-index:30;background:var(--navy);color:rgba(255,255,255,.85);
     border-top:1px solid rgba(201,168,76,0.3);padding:12px 22px;font-size:12px;
@@ -63,7 +70,7 @@
   <div class="topbar-inner">
     <img src="assets/KLE_Logo.png" alt="KLE Logo" class="brand-logo" />
     <div>
-      <div class="brand-title">Project Clinic <span>· PBD Setup</span></div>
+      <div class="brand-title">Project Clinic <span>· EE Lab Setup</span></div>
       <div class="brand-sub">KLE Technological University, Hubballi · C-SHInE</div>
     </div>
   </div>
@@ -73,6 +80,11 @@
 
   <div class="card">
     <p>This tool sets up your machine for embedded development in one run. It installs the Arduino IDE, the ESP32 board support you need for the DOIT ESP32 DEVKIT V1, and the USB drivers (CP210x and CH210x) that let your computer talk to the board over a cable. You run one file, approve a couple of prompts, and it handles the rest.</p>
+  </div>
+
+  <div class="card downloads">
+    <a class="dl-btn" href="https://raw.githubusercontent.com/rhchheda/PBD_ESP32_Installer/main/Windows-Setup.zip" download>Download for Windows</a>
+    <a class="dl-btn" href="https://raw.githubusercontent.com/rhchheda/PBD_ESP32_Installer/main/Mac-Setup.zip" download>Download for Mac</a>
   </div>
 
   <h2>Before you start</h2>
@@ -112,8 +124,8 @@
   <div class="card">
     <p>Every run writes a log file you can share with your instructor:</p>
     <div class="two-col">
-      <p><strong>Windows:</strong><br><code>%TEMP%\ee-lab-setup\install-log.txt</code></p>
-      <p><strong>Mac:</strong><br><code>/tmp/ee-lab-setup/install-log.txt</code></p>
+      <p><strong>Windows:</strong><br><code>%TEMP%\project-clinic-setup\install-log.txt</code></p>
+      <p><strong>Mac:</strong><br><code>/tmp/project-clinic-setup/install-log.txt</code></p>
     </div>
     <p>Most issues are one of two things: not enough free disk space, or a slow/interrupted internet connection during download. Re-running the setup file is safe. It reuses anything already downloaded and only redoes what is missing.</p>
   </div>
